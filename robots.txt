@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://SyncShinee.github.io/sitemap.xml 
