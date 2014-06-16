@@ -4,7 +4,7 @@
   <title><![CDATA[Coding with Rhyme]]></title>
   <link href="http://SyncShinee.github.io/atom.xml" rel="self"/>
   <link href="http://SyncShinee.github.io/"/>
-  <updated>2014-06-15T11:54:28-04:00</updated>
+  <updated>2014-06-16T11:12:58+08:00</updated>
   <id>http://SyncShinee.github.io/</id>
   <author>
     <name><![CDATA[Sync Shinee]]></name>
@@ -16,9 +16,12 @@
   <entry>
     <title type="html"><![CDATA[我的Octopress博客]]></title>
     <link href="http://SyncShinee.github.io/blog/2014/06/15/wo-de-octopressbo-ke/"/>
-    <updated>2014-06-15T06:35:12-04:00</updated>
+    <updated>2014-06-15T18:35:12+08:00</updated>
     <id>http://SyncShinee.github.io/blog/2014/06/15/wo-de-octopressbo-ke</id>
     <content type="html"><![CDATA[<p>很早之前就想自己搭一个博客了，但由于各种原因总是没有成功。在学长的推荐下，我发现了一款强大的博客系统——Octopress。它是一款基于Jekyll的内容管理工具，可以方便的搭建站点和发布静态页面。号称是hacker专属的一个博客系统(A blogging framework for hackers)。亲自体验后，我发现它可以让你<strong>像写代码一样写博客</strong>。</p>
+
+<!-- more -->
+
 
 <p>好了，废话少说，我就记录下我在fedora20环境下搭建Octopress的过程吧。</p>
 
@@ -41,7 +44,7 @@
 
 <p>发现显示</p>
 
-<blockquote><p>ruby 2.1.2p95 (2014-05-08 revision 45877) [x86_64-linux]</p></blockquote>
+<p><code>ruby 2.1.2p95 (2014-05-08 revision 45877) [x86_64-linux]</code></p>
 
 <p>证明Ruby安装成功</p>
 
@@ -71,7 +74,7 @@ $ bundle install
 </code></pre>
 
 <ul>
-<li>gem安装bunlder的过程会比较慢，因为gem的默认安装源在国外。我们可以耐心等一等，如果想换源请自行google</li>
+<li>gem安装bundler的过程会比较慢，因为gem的默认安装源在国外。我们可以耐心等一等，如果想换源请自行google</li>
 <li>如果使用<code>yum install ruby</code>命令安装ruby，在运行<code>gem install bundler</code>时会报错，这是由于yum安装Ruby并未将gem所需的所有依赖安装完整。因此请尽量使用RVM安装</li>
 </ul>
 
@@ -98,7 +101,12 @@ $ git commit -m 'Initial source commit'
 $ git push origin source 
 </code></pre>
 
-<p>之后就是博客的配置工作了。Octopress有很多第三方主题，我使用的是一个极简风格的主题dotmin。博文支持现在很流行的markdown语法，这里推荐一款在线编辑markdown文件的编辑器<a href="http://dillinger.io">dillinger</a>。</p>
+<p>之后就是博客的配置工作了。Octopress有很多第三方主题，我使用的是一个极简风格的主题dotmin。博文支持现在很流行的markdown语法，这里推荐一款在线编辑markdown文件的编辑器<a href="http://dillinger.io">dillinger</a>
+<img src="http://img.my.csdn.net/uploads/201302/27/1361970185_6834.png" alt="dillinger" />
+它支持即时预览且预览速度较快，不过只能联网编辑，linux下的markdown编辑器我推荐<a href="http://pad.haroopress.com/user.html">haroopad</a>
+<img src="http://pad.haroopress.com/assets/images/intro/2.png" alt="haroopad" /></p>
+
+<p>它支持 Windows、Mac OS X 和 Linux。 主题样式丰富，语法标亮支持 54 种编程语言。其邮件导出功能可以将文档发送到 Tumblr 和 Evernote。这款产品由一位韩国人开发的，网站上的一部份帮助文档也是韩文。</p>
 
 <h2>4.接下来会写什么</h2>
 
