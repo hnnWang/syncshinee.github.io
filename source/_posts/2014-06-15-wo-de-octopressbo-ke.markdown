@@ -9,9 +9,9 @@ categories:
 
 <!-- more -->
 
-好了，废话少说，我就记录下我在fedora20环境下搭建Octopress的过程吧。
+好了，废话少说，我就记录下我在*fedora20*环境下搭建Octopress的过程吧。
 
-1、安装Ruby
+1. 安装Ruby
 ---
 
 Octopress需要Ruby环境，RVM(Ruby Version Manager)负责安装和管理Ruby的环境。所以我们先在终端输入如下命令，来安装RVM：
@@ -29,11 +29,11 @@ Octopress需要Ruby环境，RVM(Ruby Version Manager)负责安装和管理Ruby�
 
 证明Ruby安装成功
 
-  - 注：如果Ruby版本小于1.9.3，则需用RVM安装Ruby1.9.3
+  - 如果Ruby版本小于1.9.3，则需用RVM安装Ruby1.9.3
 
 
 
-2.安装Octopress
+2. 安装Octopress
 ---
 
 Ruby安装完成后，我们可以开始安装Octopress了。
@@ -53,7 +53,7 @@ Ruby安装完成后，我们可以开始安装Octopress了。
 
 
 
-3.将博客部署到github
+3. 将博客部署到github
 ---
 
 首先，我们需要在github上创建一个个人blog的仓库（相关操作请自行google）
@@ -77,13 +77,13 @@ Ruby安装完成后，我们可以开始安装Octopress了。
 
 它支持 Windows、Mac OS X 和 Linux。 主题样式丰富，语法标亮支持 54 种编程语言。其邮件导出功能可以将文档发送到 Tumblr 和 Evernote。这款产品由一位韩国人开发的，网站上的一部份帮助文档也是韩文。
 
-4.接下来会写什么
+4. 接下来会写什么
 ---
 
 - ACM解题报告
 - 学习记录
 - 其他感兴趣的
 
-总之，一个博客搭好只是第一个开始，重要的是一直坚持写下去。加油。
+总之，一个博客搭好只是一个开始，重要的是一直坚持写下去。加油。
 
 

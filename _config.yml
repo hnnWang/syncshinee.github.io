@@ -4,7 +4,7 @@
 
 url: http://SyncShinee.github.io
 title: Coding with Rhyme
-subtitle: 渡不过你的沧海，留不住我的桑田。
+subtitle: Heal the World
 author: Sync Shinee
 simple_search: https://www.google.com/search
 description:
@@ -63,7 +63,7 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
 # ----------------------- #
 
 # Github repositories
-github_user:
+github_user: SyncShinee
 github_repo_count: 0
 github_show_profile_link: true
 github_skip_forks: true
@@ -86,9 +86,5 @@ google_analytics_tracking_id:
 # Facebook Like
 facebook_like: false
 
-# ReadMore
-expert_link: "阅读更多 →"
-
-# duoshuo comments
-# duoshuo_comments: true
-# duoshuo_short_name: 
+# UY share&comment
+comment_share: ture
