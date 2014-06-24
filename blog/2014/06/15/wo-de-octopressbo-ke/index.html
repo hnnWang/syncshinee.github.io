@@ -12,32 +12,30 @@
   <meta name="description" content="很早之前就想自己搭一个博客了，但由于各种原因总是没有成功。在学长的推荐下，我发现了一款强大的博客系统——Octopress。它是一款基于Jekyll的内容管理工具，可以方便的搭建站点和发布静态页面。号称是hacker专属的一个博客系统(A blogging framework for &hellip;">
   
 
+  <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
   <link rel="canonical" href="http://SyncShinee.github.io/blog/2014/06/15/wo-de-octopressbo-ke">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Coding with Rhyme" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
   
 
 </head>
 
 <body   >
-  <div id="sidebar_control"></div>
-  <div id="sidebar">
-    <div class="logo">
-      .krnl
-    </div>
-    <div class="content hide">
-      <section role="navigation">
-        <header role="banner"><hgroup>
+  <header role="banner"><hgroup>
   <h1><a href="/">Coding with Rhyme</a></h1>
   
     <h2>Heal the World</h2>
@@ -45,60 +43,55 @@
 </hgroup>
 
 </header>
-        
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
 <form action="https://www.google.com/search" method="get">
   <fieldset role="search">
     <input type="hidden" name="q" value="site:SyncShinee.github.io" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
-
+  
 <ul class="main-navigation">
-  <li><a href="/">home</a></li>
-  <li><a href="//wg.dotkrnl.com/p/public">public</a></li>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
 </ul>
 
-
-      </section>
-      
-        <section>
-  <h2>recent</h2>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2014/06/15/wo-de-octopressbo-ke/">我的Octopress博客</a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h2>github</h2>
-  
-  <a href="https://github.com/SyncShinee">@SyncShinee</a>
-  
-  <ul id="gh_repos">
-  </ul>
-</section>
-
-
-
-
-
-      
-    </div>
-  </div>
+</nav>
   <div id="main">
-    <div class="content">
-      <article class="hentry" role="article">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
   
-  
-    <header>
-      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+  <header>
+    
       <h1 class="entry-title">我的Octopress博客</h1>
-    </header>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
   
-  <div class="entry-content"><p>很早之前就想自己搭一个博客了，但由于各种原因总是没有成功。在学长的推荐下，我发现了一款强大的博客系统——Octopress。它是一款基于Jekyll的内容管理工具，可以方便的搭建站点和发布静态页面。号称是hacker专属的一个博客系统(A blogging framework for hackers)。亲自体验后，我发现它可以让你<strong>像写代码一样写博客</strong>。</p>
+
+
+<time datetime="2014-06-15T18:35:12+08:00" pubdate data-updated="true">Jun 15<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>很早之前就想自己搭一个博客了，但由于各种原因总是没有成功。在学长的推荐下，我发现了一款强大的博客系统——Octopress。它是一款基于Jekyll的内容管理工具，可以方便的搭建站点和发布静态页面。号称是hacker专属的一个博客系统(A blogging framework for hackers)。亲自体验后，我发现它可以让你<strong>像写代码一样写博客</strong>。</p>
 
 <!-- more -->
 
@@ -199,13 +192,16 @@ $ git push origin source
 
 <p>总之，一个博客搭好只是一个开始，重要的是一直坚持写下去。加油。</p>
 </div>
-  <footer>
-    <div class="articlemeta">
-      <span class="hide">
-        
 
- @
-        
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Sync Shinee</span></span>
+
+      
 
 
 
@@ -218,13 +214,10 @@ $ git push origin source
 
 
 <time datetime="2014-06-15T18:35:12+08:00" pubdate data-updated="true">Jun 15<span>th</span>, 2014</time>
-      </span>
-      <span class="plus">
-        
-          <a href="#">+</a>
-        
-      </span>
-    </div>
+      
+
+
+    </p>
     
       <div class="sharing">
   
@@ -259,78 +252,84 @@ var jiathis_config = {data_track_clickback:'true'};
 </div>
 
     
-    <div class="meta">
+    <p class="meta">
       
-    </div>
+      
+    </p>
   </footer>
-
-
 </article>
 
-
-    </div>
-    <footer role="contentinfo"><div class="content">
-  <p>
-    Copyright &copy; 2014 Sync Shinee
-  </p>
 </div>
 
-</footer>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
     
+      <li class="post">
+        <a href="/blog/2014/06/15/wo-de-octopressbo-ke/">我的Octopress博客</a>
+      </li>
+    
+  </ul>
+</section>
 
-
-
-
-
-
-
-
-
-
-
-  </div>
-  <script src="/javascripts/modernizr-2.0.js"></script>
-<script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-<script src="/javascripts/libs/respond.js" type="text/javascript"></script>
-<script src="/javascripts/octopress.js" type="text/javascript"></script>
-
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/SyncShinee">@SyncShinee</a> on GitHub
+  
   <script type="text/javascript">
-  $(document).ready(function(){
-    if (!window.jXHR){
-      var jxhr = document.createElement('script');
-      jxhr.type = 'text/javascript';
-      jxhr.src = '/javascripts/libs/jXHR.js';
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(jxhr, s);
-    }
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
 
-    github.showRepos({
-      user: 'SyncShinee',
-      count: 0,
-      skip_forks: true,
-      target: '#gh_repos'
+        github.showRepos({
+            user: 'SyncShinee',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
     });
-  });
   </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
 
 
-<script type="text/javascript">
-$(document).ready(function(){
-  var userAgent = navigator.userAgent.toLowerCase();
-  var isiPhone = (userAgent.indexOf('iphone') != -1 || userAgent.indexOf('ipod') != -1) ? true : false;
-  var isAndroid = (userAgent.indexOf('android') != -1) ? true : false;
-  clickEvent = (isiPhone || isAndroid) ? 'touchstart' : 'click';
-  $('#sidebar').on(clickEvent, function() {
-    $(this).toggleClass('open');
-  });
-  $('.articlemeta').on(clickEvent, function() {
-    toggleDisqus();
-    $(this).toggleClass('open');
-  });
-});
-</script>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Sync Shinee -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>
