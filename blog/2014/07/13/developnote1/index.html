@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Sync Shinee</title>
+  <title>HandyBUAA开发笔记（一） - Sync Shinee</title>
   <meta name="author" content="Sync Shinee">
 
   
@@ -17,7 +17,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
   
-  <link rel="canonical" href="http://SyncShinee.github.io">
+  <link rel="canonical" href="http://SyncShinee.github.io/blog/2014/07/13/developnote1">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Sync Shinee" type="application/atom+xml">
@@ -94,55 +94,106 @@
   </div>
   <div id="main">
     <div class="content">
-      
-<header>
-  <div class="back">　</div>
-  <h1 class="entry-title"><a href="/">Sync Shinee</a></h1>
-</header>
-<ul class="blog-index">
+      <article class="hentry" role="article">
   
-    
-    
-      
-      
-    
-    
   
-  <li class="entry first-entry">
-    <h2 class="entry-title"><a href="/blog/2014/07/13/developnote1/">HandyBUAA开发笔记（一）</a></h2>
-    
-      <div class="entry-content"><p>这个暑假，原定的通过新版vpn爬课表的开发计划由于学校对移动版vpn的支持一直有问题而搁浅。于是<code>Ken Yu</code>学长让我定了一个新的开发计划：社团公告系统。他负责搞后台那部分，手机端的任务由我来制定，并和另外两名同学分配以下。最后，我分到的任务是完成社团公告系统的列表界面。通过这两天的努力，我这部分的任务基本完成了。下面就记录以下我这两天的成果吧～</p>
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">HandyBUAA开发笔记（一）</h1>
+    </header>
+  
+  <div class="entry-content"><p>这个暑假，原定的通过新版vpn爬课表的开发计划由于学校对移动版vpn的支持一直有问题而搁浅。于是<code>Ken Yu</code>学长让我定了一个新的开发计划：社团公告系统。他负责搞后台那部分，手机端的任务由我来制定，并和另外两名同学分配以下。最后，我分到的任务是完成社团公告系统的列表界面。通过这两天的努力，我这部分的任务基本完成了。下面就记录以下我这两天的成果吧～</p>
 
-</div>
-      
-      
-        <footer>
-          <a rel="full-article" href="/blog/2014/07/13/developnote1/">Read on &rarr;</a>
-        </footer>
-      
-    
-  </li>
-  
+<!-- more -->
 
 
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2014/06/15/wo-de-octopressbo-ke/">我的Octopress博客</a></h2>
-    
-  </li>
-  
+<h2>开发记录</h2>
 
+<ol>
+<li><strong>与SlidingMenu的交互。</strong>
 
-  
+<ul>
+<li>我们的HandyBUAA引入了开源项目<a href="https://github.com/jfeinstein10/SlidingMenu">SlidingMenu</a>，因此要添加社团公告系统的列表就要SlidingMenu里面添加相应的模块并完成新activity与SlidingMenu的交互。</li>
+<li>往SlidingMenu里添加新模块可以直接在xml文件里完成。通过阅读已有的代码，我明白了SlidingMenu与activity交互的机制。</li>
+<li>首先为要添加的activity创建一个fragment，这个fragment继承于一个总的MainMenuFragment，在总的fragment里，我们对相应的SlidingMenu模块的点击事件作出判断并响应。在新建的fragment里也进行应有的响应。然后让这个activity实现这个fragment。这样，这个功能就实现了。</li>
 </ul>
-<div class="pagination">
+</li>
+<li><strong>列表内容的获取与投放</strong>
+
+<ul>
+<li>要完成数据的创建、获取和投放，首先你要有这个数据类型……所以最先进行的就是定义数据类型，定义数据库组成等等，有点无聊。</li>
+<li>投放的时候，首先，把数据从数据库中取出（如果有的话），通过sql语句来完成，将数据取出放在Cursor里，然后再把Cursor中的数据打包放入LinkedList中。之后通过一个ViewAdapter把LinkedList中的数据放到一个名为RefreshListView的由ListView派生的View里面，这个特殊的ListView是由学长们封装好的，它可以支持下拉刷新和加载更多功能。</li>
+<li>最后添加数据刷新和点击打开相应公告的详细信息的功能。数据刷新通过一个AsyncTask类实现。点击打开详细信息的功能直接给ListView添加OnItemClickListener方法就可以了。</li>
+</ul>
+</li>
+</ol>
+
+
+<p>附截图（由于HandyBUAA不是开源项目，就不附源码了）
+<img src="/images/14-07-13/HandyBUAA.png" alt="pic" />
+<img src="/images/14-07-13/HandyBUAAsocietynotice.png" alt="pic1" /></p>
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+<span class="categories">
   
+    <a class='category' href='/blog/categories/android/'>android</a>
+  
+</span>
+
+ @
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-13T15:17:57+08:00" pubdate data-updated="true">Jul 13<span>th</span>, 2014</time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
+  
+  
+  
+  
+    <!--UY BEGIN -->
+<br>
+<br>
+<br>
+<br>
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1941840"></script>
+<!-- UY END -->
+
   
 </div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/06/15/wo-de-octopressbo-ke/" title="Previous Post: 我的Octopress博客">&laquo; 我的Octopress博客</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
 
     </div>
     <footer role="contentinfo"><div class="content">
