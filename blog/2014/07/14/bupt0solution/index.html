@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>BUPT新生归来赛Solution - Sync Shinee</title>
+  <meta name="author" content="Sync Shinee">
+
+  
+  <meta name="description" content="前几天打了BUPT的新生归来赛，感觉题目难度还可以吧，有几道题的确是需要费一些脑筋。下面我就来写一下这次比赛的解题报告。 A. Hard Game 题目大意是给你n堆硬币，每堆有k个，每次只能从一堆硬币中取若干个，不能不取。谁最后没有石子可取就判为输。Alice先手取，Bob后手取，问对给定的n， &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  
+  <link rel="canonical" href="http://SyncShinee.github.io/blog/2014/07/14/bupt0solution">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Sync Shinee" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <div id="sidebar_control"></div>
+  <div id="sidebar">
+    <div class="logo">
+      Syx
+    </div>
+    <div class="content hide">
+      <section role="navigation">
+        <header role="banner"><hgroup>
+  <h1><a href="/">Sync Shinee</a></h1>
+  
+    <h2>Coding with rhythm.</h2>
+  
+</hgroup>
+
+</header>
+        
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:SyncShinee.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+  <li><a href="/">home</a></li>
+  <!--li><a href="//wg.dotkrnl.com/p/public">public</a></li-->
+</ul>
+
+
+      </section>
+      
+        <section>
+  <h2>recent</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/07/14/bupt0solution/">BUPT新生归来赛Solution</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/13/developnote1/">HandyBUAA开发笔记（一）</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/15/wo-de-octopressbo-ke/">我的Octopress博客</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h2>github</h2>
+  
+  <a href="https://github.com/SyncShinee">@SyncShinee</a>
+  
+  <ul id="gh_repos">
+  </ul>
+</section>
+
+
+
+
+
+      
+    </div>
+  </div>
+  <div id="main">
+    <div class="content">
+      <article class="hentry" role="article">
+  
+  
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">BUPT新生归来赛Solution</h1>
+    </header>
+  
+  <div class="entry-content"><p>前几天打了BUPT的新生归来赛，感觉题目难度还可以吧，有几道题的确是需要费一些脑筋。下面我就来写一下这次比赛的解题报告。</p>
+
+<!-- more -->
+
+
+<h2><a href="http://code.bupt.edu.cn/problem/contest/101/problem/A/">A. Hard Game</a></h2>
+
+<p>题目大意是给你n堆硬币，每堆有k个，每次只能从一堆硬币中取若干个，不能不取。谁最后没有石子可取就判为输。Alice先手取，Bob后手取，问对给定的n，k，谁会获胜。</p>
+
+<p>很明显，在堆数为奇数时，Alice有必胜策略。我们可以给Alice这样的策略，第一次取k个，这样会剩下k-1堆。若Bob也取k个，则Alice再取k个；若Bob取a个(a &lt; k)则Alice在另外一堆里同样取a个。这样总会剩下偶数堆，并且这些堆中的硬币数两两相同。这样Alice必定会最后取完所有的硬币。</p>
+
+<p>事实上，这个问题是Nim问题的简化版。Nim问题为，有n堆硬币，每堆有ki个，每次只能从一堆硬币中取若干个，不能不取。谁最后没有石子可取就判为输。这个问题可通过判断S=k1 ^ k2  ……<sup>kn</sup>的值来判断是否先手必胜(不为0则先手必胜)。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>附证明：
+</span><span class='line'>称一个先手必胜的局面为P局面，反之称之为N局面。
+</span><span class='line'>1. 当k1=k2=……=kn=0时，满足中状态时P局面。
+</span><span class='line'>2. 若S=0，若从堆i中取若干硬币使其剩下ki‘个(ki’ &lt; ki)，
+</span><span class='line'>   则ki ^ ki’ != 0。又S‘ ^ ki ^ ki’ = S = 0，故S‘ = ki ^ ki’ != 0。
+</span><span class='line'>   满足P局面的所有子局面都是N局面。
+</span><span class='line'>3. 若S != 0，设S的二进制位为A1A2……An，考虑第一位是1的。
+</span><span class='line'>   在P中取出该位同是1的，不放设为P1。可知P1 ^ S &lt; P1，
+</span><span class='line'>   令P1‘ = P1 ^ S，则P1’ ^ P2 ^ …… ^ Pn=0。满足N局面存在至少一个P局面。
+</span><span class='line'>证毕。</span></code></pre></td></tr></table></div></figure>
+
+
+<p>而这道题其实就是所有的ki相等的情况，则在n为奇数时，S不为零。这也验证了我们的结论。</p>
+
+<p>Nim问题还有很多扩展问题，这里就不再赘述了，有兴趣的可以自行google。</p>
+
+<p>附<a href="/pages/bupt0/bupt0asource/">源代码</a></p>
+
+<h2><a href="http://code.bupt.edu.cn/problem/contest/101/problem/B/">B. Prime Judge</a></h2>
+
+<p>题目大意是给你一个复数判断它是不是复素数。复素数的定义为</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>如果a+bi能被分解为(a1+b1i)*(a2+b2i)的形式，那么该数不是素数；否则，该数是素数。
+</span><span class='line'>其中a1 、b1、 a2 、b2均为整数，且1，-1，0，i，-i不能作为被分解的因子。</span></code></pre></td></tr></table></div></figure>
+
+
+<p>刚开始拿到这题确实没什么思路。因为a、b、a1、b1、a2、b2都有可能是负数，枚举也无从下手。后来，通过whn同学的提醒，我终于找到了解题思路。</p>
+
+<p>我们可以发现如果a+bi=(a1+b1i)<em>(a2+b2i),则|a+bi|=|a1+b1i</em>|a2+b2i|，即a<sup>2</sup> + b<sup>2</sup> = (a1<sup>2</sup> + b1<sup>2</sup>) * (a2<sup>2</sup> + b2<sup>2</sup>)。这样，就把原问题转化为一个正数的分解因数。而这我们可以在O(sqrt(n))的时间内解决。不过还有一个要求就是这两个因数都必须是两个数的平方和，判断这个问题可以通过枚举a1，然后a2 = 因数1 &ndash; a1<sup>2</sup> ;再判断sqrt(a2)<sup>2</sup> 是不是等于a2，如果相等，证明因数1是合法的。这个复杂度为O(sqrt(sqrt(n)))。而n为a<sup>2</sup> + b<sup>2</sup> ，因此总的时间复杂度为O(a*sqrt(a))，可以接受。</p>
+
+<p>whn同学还告诉我一种更加简洁的解法，具体可以参考<a href="http://blog.csdn.net/whn757397540/article/details/37742457">这篇博文</a></p>
+
+<p>附<a href="/pages/bupt0/bupt0bsource/">源代码</a></p>
+
+<h2><a href="http://code.bupt.edu.cn/problem/contest/101/problem/C/">C. Freeway</a></h2>
+
+<p>题目大意是给你一个无根树，这个树的一些边是有向的，一些边是无向的。现在希望改变一些边的方向，使得我们可以从某一个点出发到达任意一点。改变边的方向的花费即为这条边的权值。现在请你找出花费最小的方案。</p>
+
+<p>这道题出的很有迷惑性。刚拿到题目时，我以为从每一个点出发都有许多方案可以选择，而且还有可能从不同的点出发，感觉这题太难了。赛后才发现，原来这是一棵树。也就是说如果你确定了要从某一个点出发，那么这个图的所有边的方向已经都确定了。而且我们还可以发现，从某个点出发所需的花费与从与它相邻的点出发所需的花费之间的差别仅在这两点间的边上。</p>
+
+<p>因此我们可以任选一个点来遍历整个树，求出他的花费，然后再遍历一便，更新所有点的花费。时间复杂度仅为O(n)。</p>
+
+<p>附<a href="/pages/bupt0/bupt0csource/">源代码</a></p>
+
+<h2><a href="http://code.bupt.edu.cn/problem/contest/101/problem/D/">D. Who Is Joyful</a></h2>
+
+<p>题目大意是给你n个点，每个点都有一个高度值。接下来有q次询问。每次询问指定闭区间[l,r]，问在该区间内有多少点是joyful的。一个点是joyful的当且仅当它前面有比他小的点并且它后面有比他大的点，每次询问的区间外的点对区间内的点没有影响。</p>
+
+<p>这道题由于每次询问的区间是变化的，而一个点是否是joyful的也随着区间的变化而变化，因此没有想出有效的算法。赛后通过阅读大神AC的代码，我才恍然大悟。</p>
+
+<p>其实这道题等价于在区间中寻找三元组(a&lt; b &lt; c)的个数。而这样的三元组我们只用考虑长度最短的即对每个b找到它后面第一个比他大的和它前面第一个比他小的即可。但是这样还是没有简化问题。我们先把所有的询问按区间右端点排序，然后依次求解。我们把这个三元组的个数记录在a点，添加三元组的标记记录在b点，也就是说，对每一次询问，我们把所有c点位于上次的r到这次的r之间的三元组添加到树状数组的a点中，这样，我们就可以通过树状数组来实现log(n)的数组维护和查询。并且时间复杂度允许。</p>
+
+<p>附<a href="/pages/bupt0/bupt0dsource/">源代码</a></p>
+
+<h2><a href="http://code.bupt.edu.cn/problem/contest/101/problem/E/">E. 最小距离查询</a></h2>
+
+<p>题目大意是初始时给你一个字符串，接下来有m次操作，操作共有两种，一种是在已有的字符串末尾添加一个字符，一种是询问对于位置x，在S当中和S[x]相等且距x最近的字符与x的距离</p>
+
+<p>这道题也比较水，通过两个数组front[i][j]，behind[i][j]分别记录下来i点前后距离i点最近的j字母的位置。初始化可以通过递推完成，维护的时间复杂度也不高，询问就直接取front、behind中的最小值。</p>
+
+<p>这道题whn同学还有另一种解法，具体可以参考<a href="http://blog.csdn.net/whn757397540/article/details/37729251">这篇博文</a>。</p>
+
+<p>附<a href="/pages/bupt0/bupt0esource/">源代码</a></p>
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/acm/'>ACM</a>
+  
+</span>
+
+ @
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-14T22:34:45+08:00" pubdate data-updated="true">Jul 14<span>th</span>, 2014</time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
+  
+  
+  
+  
+    <!--UY BEGIN -->
+<br>
+<br>
+<br>
+<br>
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1941840"></script>
+<!-- UY END -->
+
+  
+</div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/07/13/developnote1/" title="Previous Post: HandyBUAA开发笔记（一）">&laquo; HandyBUAA开发笔记（一）</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
+
+    </div>
+    <footer role="contentinfo"><div class="content">
+  <p>
+    Copyright &copy; 2014 Sync Shinee <br />
+    <small>Powered by <a href="http://octopress.org">Octopress</a> themed with a version of <a href="https://github.com/dotkrnl/dotmin">dotmin</a></small>
+  </p>
+</div>
+
+</footer>
+    
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+  <script src="/javascripts/modernizr-2.0.js"></script>
+<script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+<script src="/javascripts/libs/respond.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    if (!window.jXHR){
+      var jxhr = document.createElement('script');
+      jxhr.type = 'text/javascript';
+      jxhr.src = '/javascripts/libs/jXHR.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jxhr, s);
+    }
+
+    github.showRepos({
+      user: 'SyncShinee',
+      count: 0,
+      skip_forks: true,
+      target: '#gh_repos'
+    });
+  });
+  </script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  var userAgent = navigator.userAgent.toLowerCase();
+  var isiPhone = (userAgent.indexOf('iphone') != -1 || userAgent.indexOf('ipod') != -1) ? true : false;
+  var isAndroid = (userAgent.indexOf('android') != -1) ? true : false;
+  clickEvent = (isiPhone || isAndroid) ? 'touchstart' : 'click';
+  $('#sidebar').on(clickEvent, function() {
+    $(this).toggleClass('open');
+  });
+  $('.articlemeta').on(clickEvent, function() {
+    toggleDisqus();
+    $(this).toggleClass('open');
+  });
+});
+</script>
+
+</body>
+</html>
