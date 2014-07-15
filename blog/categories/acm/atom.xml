@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ACM | Sync Shinee]]></title>
   <link href="http://SyncShinee.github.io/blog/categories/acm/atom.xml" rel="self"/>
   <link href="http://SyncShinee.github.io/"/>
-  <updated>2014-07-15T16:24:33+08:00</updated>
+  <updated>2014-07-15T23:45:13+08:00</updated>
   <id>http://SyncShinee.github.io/</id>
   <author>
     <name><![CDATA[Sync Shinee]]></name>
@@ -14,7 +14,81 @@
 
   
   <entry>
-    <title type="html"><![CDATA[BUPT新生归来赛Solution]]></title>
+    <title type="html"><![CDATA[BUPT新生暑假个人排位赛01 Solution]]></title>
+    <link href="http://SyncShinee.github.io/blog/2014/07/15/bupt1solution/"/>
+    <updated>2014-07-15T16:27:10+08:00</updated>
+    <id>http://SyncShinee.github.io/blog/2014/07/15/bupt1solution</id>
+    <content type="html"><![CDATA[<p>昨天下午，BUPT又举行了一场比赛。这场比赛难度要比上一次小不少。都是一些比较水的题目。下面就简单写一写我的思路吧。</p>
+
+<!-- more -->
+
+
+<h2><a href="http://code.bupt.edu.cn/problem/contest/104/problem/A/">A. 学姐的桌面</a></h2>
+
+<p>大水题。。。排序+二分， 没啥好说的</p>
+
+<p>附<a href="/pages/bupt1/bupt1asource/">源代码</a></p>
+
+<h2><a href="http://code.bupt.edu.cn/problem/contest/104/problem/B/">B. 学姐去学车</a></h2>
+
+<p>通过手工模拟，我们可以发现教练给学姐是以n+1为周期的。不过前m天不在这个周期内。所以前m天特判一下，后面先减去前面不在周期内的天数，再mod(n+1)就可以判断这一是由谁来教了。</p>
+
+<p>附<a href="/pages/bupt1/bupt1bsource/">源代码</a></p>
+
+<h2><a href="http://code.bupt.edu.cn/problem/contest/104/problem/C/">C. 学姐的学弟</a></h2>
+
+<p>题目大意是给你n个圆，每个圆的圆心(xi,yi)都为整数点且半径为1，且1&lt;=xi，yi&lt;=100。求这些圆的面积并。</p>
+
+<p>刚开始拿到这道题，感觉好复杂，果断跳过去做其他的。在把另外4题A掉之后才回来看，还是感觉好复杂……发现了一种O(n<sup>2</sup> log(n))的算法最终也没调出来。</p>
+
+<p>赛后whn同学提醒:圆心都在整点且半径为1，且坐标范围在[0,101]*[0,101]!!我们可以发现对坐标网格中的每一个格子来说，它所贡献的面积仅与它四个顶点处有没有圆来决定，而且仅有四种情况，即0，满格，四分之一圆，以及两个四分之一圆相交。这样枚举网格就可以了。复杂度仅为O( n<sup>2</sup> )。</p>
+
+<p>附<a href="/pages/bupt1/bupt1csource/">源代码</a></p>
+
+<h2><a href="http://code.bupt.edu.cn/problem/contest/104/problem/D/">D. BLOCKS</a></h2>
+
+<p>题目大意是给一个nxm的仅由‘.’、‘#’构成的矩阵，问矩阵中由‘#’组成的矩阵的个数。要求每个‘#’所在的联通块必须是一个矩阵，若不是则输出“So Sad”</p>
+
+<p>一道简单的搜索题。或称之为洪水填充法(Flood Fill)。对这个矩阵扫一遍，发现有‘#’就进行bfs，同时判断它构成的是不是一个矩阵（粗心写错了好几发T ^ T）。</p>
+
+<p>附<a href="/pages/bupt1/bupt1dsource/">源代码</a></p>
+
+<h2><a href="http://code.bupt.edu.cn/problem/contest/104/problem/E/">E. 数的关系</a></h2>
+
+<p>题目大意是告诉你有n个数，问这些数共有几种可能的序关系。</p>
+
+<p>这个题比较有意思。有一种做法是直接从数学角度找，具体可以参考<a href="http://blog.csdn.net/fisher_jiang/article/details/2470369">这篇博文</a>。</p>
+
+<p>我的做法是，将每个序关系等价描述为一种小球放箱子的方案。所有画等号的数放到一个箱子中，每有一个'&lt;&lsquo;号，就将它后面的数放在一个新的箱子中，不允许有空箱子。即箱子数为小于号的个数加一。</p>
+
+<p>设f[i][j]表示把前i个数放入j个箱子的方案数。考虑第i个数放入时，
+有两种情况。</p>
+
+<ol>
+<li>数i单独在一个箱子里，那么相当于先把前i-1个数放入j-1个箱子，然后将数i和它所在的箱子一起插进去，一共有f[i-1][j-1] * j种可能</li>
+<li>数i所在的箱子中还有其它数，那么我们可以先将i-1个数放入j个箱子，然后把数i放入其中一个箱子，也就是说有f[i-1][j] * j种可能</li>
+</ol>
+
+
+<p>那么，我们就可以得到一个这样的额动态规划算法：</p>
+
+<ul>
+<li>初始化: f[i][1] = 1</li>
+<li>状态转移方程: f[i][j] = (f[i-1][j-1] + f[i-1][j]) * j</li>
+<li>目标函数: f[n][1] + f[n][2] + …… + f[n][n]</li>
+</ul>
+
+
+<p>时间复杂度为O( n<sup>2</sup> )。</p>
+
+<p>注意使用高精度。</p>
+
+<p>附<a href="/pages/bupt1/bupt1esource/">源代码</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[BUPT新生归来赛 Solution]]></title>
     <link href="http://SyncShinee.github.io/blog/2014/07/14/bupt0solution/"/>
     <updated>2014-07-14T22:34:45+08:00</updated>
     <id>http://SyncShinee.github.io/blog/2014/07/14/bupt0solution</id>
@@ -35,12 +109,12 @@
 附证明：
 称一个先手必胜的局面为P局面，反之称之为N局面。
 1. 当k1=k2=……=kn=0时，满足中状态时P局面。
-2. 若S=0，若从堆i中取若干硬币使其剩下ki‘个(ki’ &lt; ki)，
-   则ki ^ ki’ != 0。又S‘ ^ ki ^ ki’ = S = 0，故S‘ = ki ^ ki’ != 0。
+2. 若S=0，若从堆i中取若干硬币使其剩下ki'个(ki' &lt; ki)，
+   则ki ^ ki' != 0。又S' ^ ki ^ ki' = S = 0，故S' = ki ^ ki' != 0。
    满足P局面的所有子局面都是N局面。
 3. 若S != 0，设S的二进制位为A1A2……An，考虑第一位是1的。
    在P中取出该位同是1的，不放设为P1。可知P1 ^ S &lt; P1，
-   令P1‘ = P1 ^ S，则P1’ ^ P2 ^ …… ^ Pn=0。满足N局面存在至少一个P局面。
+   令P1' = P1 ^ S，则P1' ^ P2 ^ …… ^ Pn=0。满足N局面存在至少一个P局面。
 证毕。
 </code>
 而这道题其实就是所有的ki相等的情况，则在n为奇数时，S不为零。这也验证了我们的结论。</p>
@@ -70,7 +144,7 @@
 
 <p>这道题出的很有迷惑性。刚拿到题目时，我以为从每一个点出发都有许多方案可以选择，而且还有可能从不同的点出发，感觉这题太难了。赛后才发现，原来这是一棵树。也就是说如果你确定了要从某一个点出发，那么这个图的所有边的方向已经都确定了。而且我们还可以发现，从某个点出发所需的花费与从与它相邻的点出发所需的花费之间的差别仅在这两点间的边上。</p>
 
-<p>因此我们可以任选一个点来遍历整个树，求出他的花费，然后再遍历一便，更新所有点的花费。时间复杂度仅为O(n)。</p>
+<p>因此我们可以任选一个点来遍历整个树，求出他的花费，然后再遍历一次，更新所有点的花费。时间复杂度仅为O(n)。</p>
 
 <p>附<a href="/pages/bupt0/bupt0csource/">源代码</a></p>
 

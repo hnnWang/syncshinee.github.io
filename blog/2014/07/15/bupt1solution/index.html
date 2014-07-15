@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>HandyBUAA开发笔记（一） - Sync Shinee</title>
+  <title>BUPT新生暑假个人排位赛01 Solution - Sync Shinee</title>
   <meta name="author" content="Sync Shinee">
 
   
-  <meta name="description" content="这个暑假，原定的通过新版vpn爬课表的开发计划由于学校对移动版vpn的支持一直有问题而搁浅。于是Ken Yu学长让我定了一个新的开发计划：社团公告系统。他负责搞后台那部分，手机端的任务由我来制定，并和另外两名同学分配以下。最后，我分到的任务是完成社团公告系统的列表界面。通过这两天的努力， &hellip;">
+  <meta name="description" content="昨天下午，BUPT又举行了一场比赛。这场比赛难度要比上一次小不少。都是一些比较水的题目。下面就简单写一写我的思路吧。 A. 学姐的桌面 大水题。。。排序+二分， 没啥好说的 附源代码 B. 学姐去学车 通过手工模拟，我们可以发现教练给学姐是以n+1为周期的。不过前m天不在这个周期内。 &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -17,7 +17,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
   
-  <link rel="canonical" href="http://SyncShinee.github.io/blog/2014/07/13/developnote1">
+  <link rel="canonical" href="http://SyncShinee.github.io/blog/2014/07/15/bupt1solution">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Sync Shinee" type="application/atom+xml">
@@ -107,39 +107,75 @@
   
     <header>
       <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
-      <h1 class="entry-title">HandyBUAA开发笔记（一）</h1>
+      <h1 class="entry-title">BUPT新生暑假个人排位赛01 Solution</h1>
     </header>
   
-  <div class="entry-content"><p>这个暑假，原定的通过新版vpn爬课表的开发计划由于学校对移动版vpn的支持一直有问题而搁浅。于是<code>Ken Yu</code>学长让我定了一个新的开发计划：社团公告系统。他负责搞后台那部分，手机端的任务由我来制定，并和另外两名同学分配以下。最后，我分到的任务是完成社团公告系统的列表界面。通过这两天的努力，我这部分的任务基本完成了。下面就记录以下我这两天的成果吧～</p>
+  <div class="entry-content"><p>昨天下午，BUPT又举行了一场比赛。这场比赛难度要比上一次小不少。都是一些比较水的题目。下面就简单写一写我的思路吧。</p>
 
 <!-- more -->
 
 
-<h2>开发记录</h2>
+<h2><a href="http://code.bupt.edu.cn/problem/contest/104/problem/A/">A. 学姐的桌面</a></h2>
+
+<p>大水题。。。排序+二分， 没啥好说的</p>
+
+<p>附<a href="/pages/bupt1/bupt1asource/">源代码</a></p>
+
+<h2><a href="http://code.bupt.edu.cn/problem/contest/104/problem/B/">B. 学姐去学车</a></h2>
+
+<p>通过手工模拟，我们可以发现教练给学姐是以n+1为周期的。不过前m天不在这个周期内。所以前m天特判一下，后面先减去前面不在周期内的天数，再mod(n+1)就可以判断这一是由谁来教了。</p>
+
+<p>附<a href="/pages/bupt1/bupt1bsource/">源代码</a></p>
+
+<h2><a href="http://code.bupt.edu.cn/problem/contest/104/problem/C/">C. 学姐的学弟</a></h2>
+
+<p>题目大意是给你n个圆，每个圆的圆心(xi,yi)都为整数点且半径为1，且1&lt;=xi，yi&lt;=100。求这些圆的面积并。</p>
+
+<p>刚开始拿到这道题，感觉好复杂，果断跳过去做其他的。在把另外4题A掉之后才回来看，还是感觉好复杂……发现了一种O(n<sup>2</sup> log(n))的算法最终也没调出来。</p>
+
+<p>赛后whn同学提醒:圆心都在整点且半径为1，且坐标范围在[0,101]*[0,101]!!我们可以发现对坐标网格中的每一个格子来说，它所贡献的面积仅与它四个顶点处有没有圆来决定，而且仅有四种情况，即0，满格，四分之一圆，以及两个四分之一圆相交。这样枚举网格就可以了。复杂度仅为O( n<sup>2</sup> )。</p>
+
+<p>附<a href="/pages/bupt1/bupt1csource/">源代码</a></p>
+
+<h2><a href="http://code.bupt.edu.cn/problem/contest/104/problem/D/">D. BLOCKS</a></h2>
+
+<p>题目大意是给一个nxm的仅由‘.’、‘#’构成的矩阵，问矩阵中由‘#’组成的矩阵的个数。要求每个‘#’所在的联通块必须是一个矩阵，若不是则输出“So Sad”</p>
+
+<p>一道简单的搜索题。或称之为洪水填充法(Flood Fill)。对这个矩阵扫一遍，发现有‘#’就进行bfs，同时判断它构成的是不是一个矩阵（粗心写错了好几发T ^ T）。</p>
+
+<p>附<a href="/pages/bupt1/bupt1dsource/">源代码</a></p>
+
+<h2><a href="http://code.bupt.edu.cn/problem/contest/104/problem/E/">E. 数的关系</a></h2>
+
+<p>题目大意是告诉你有n个数，问这些数共有几种可能的序关系。</p>
+
+<p>这个题比较有意思。有一种做法是直接从数学角度找，具体可以参考<a href="http://blog.csdn.net/fisher_jiang/article/details/2470369">这篇博文</a>。</p>
+
+<p>我的做法是，将每个序关系等价描述为一种小球放箱子的方案。所有画等号的数放到一个箱子中，每有一个&#8217;&lt;&lsquo;号，就将它后面的数放在一个新的箱子中，不允许有空箱子。即箱子数为小于号的个数加一。</p>
+
+<p>设f[i][j]表示把前i个数放入j个箱子的方案数。考虑第i个数放入时，
+有两种情况。</p>
 
 <ol>
-<li><strong>与SlidingMenu的交互。</strong>
-
-<ul>
-<li>我们的HandyBUAA引入了开源项目<a href="https://github.com/jfeinstein10/SlidingMenu">SlidingMenu</a>，因此要添加社团公告系统的列表就要SlidingMenu里面添加相应的模块并完成新activity与SlidingMenu的交互。</li>
-<li>往SlidingMenu里添加新模块可以直接在xml文件里完成。通过阅读已有的代码，我明白了SlidingMenu与activity交互的机制。</li>
-<li>首先为要添加的activity创建一个fragment，这个fragment继承于一个总的MainMenuFragment，在总的fragment里，我们对相应的SlidingMenu模块的点击事件作出判断并响应。在新建的fragment里也进行应有的响应。然后让这个activity实现这个fragment。这样，这个功能就实现了。</li>
-</ul>
-</li>
-<li><strong>列表内容的获取与投放</strong>
-
-<ul>
-<li>要完成数据的创建、获取和投放，首先你要有这个数据类型……所以最先进行的就是定义数据类型，定义数据库组成等等，有点无聊。</li>
-<li>投放的时候，首先，把数据从数据库中取出（如果有的话），通过sql语句来完成，将数据取出放在Cursor里，然后再把Cursor中的数据打包放入LinkedList中。之后通过一个ViewAdapter把LinkedList中的数据放到一个名为RefreshListView的由ListView派生的View里面，这个特殊的ListView是由学长们封装好的，它可以支持下拉刷新和加载更多功能。</li>
-<li>最后添加数据刷新和点击打开相应公告的详细信息的功能。数据刷新通过一个AsyncTask类实现。点击打开详细信息的功能直接给ListView添加OnItemClickListener方法就可以了。</li>
-</ul>
-</li>
+<li>数i单独在一个箱子里，那么相当于先把前i-1个数放入j-1个箱子，然后将数i和它所在的箱子一起插进去，一共有f[i-1][j-1] * j种可能</li>
+<li>数i所在的箱子中还有其它数，那么我们可以先将i-1个数放入j个箱子，然后把数i放入其中一个箱子，也就是说有f[i-1][j] * j种可能</li>
 </ol>
 
 
-<p>附截图（由于HandyBUAA不是开源项目，就不附源码了）
-<img src="/images/14-07-13/HandyBUAA.png" alt="pic" />
-<img src="/images/14-07-13/HandyBUAAsocietynotice.png" alt="pic1" /></p>
+<p>那么，我们就可以得到一个这样的额动态规划算法：</p>
+
+<ul>
+<li>初始化: f[i][1] = 1</li>
+<li>状态转移方程: f[i][j] = (f[i-1][j-1] + f[i-1][j]) * j</li>
+<li>目标函数: f[n][1] + f[n][2] + …… + f[n][n]</li>
+</ul>
+
+
+<p>时间复杂度为O( n<sup>2</sup> )。</p>
+
+<p>注意使用高精度。</p>
+
+<p>附<a href="/pages/bupt1/bupt1esource/">源代码</a></p>
 </div>
   <footer>
     <div class="articlemeta">
@@ -148,7 +184,7 @@
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/android/'>android</a>
+    <a class='category' href='/blog/categories/acm/'>ACM</a>
   
 </span>
 
@@ -165,7 +201,7 @@
   
 
 
-<time datetime="2014-07-13T15:17:57+08:00" pubdate data-updated="true">Jul 13<span>th</span>, 2014</time>
+<time datetime="2014-07-15T16:27:10+08:00" pubdate data-updated="true">Jul 15<span>th</span>, 2014</time>
       </span>
       <span class="plus">
         
@@ -194,7 +230,7 @@
     
     <div class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/06/15/wo-de-octopressbo-ke/" title="Previous Post: 我的Octopress博客">&laquo; 我的Octopress博客</a>
+        <a class="basic-alignment left" href="/blog/2014/07/14/bupt0solution/" title="Previous Post: BUPT新生归来赛 Solution">&laquo; BUPT新生归来赛 Solution</a>
       
     </div>
   </footer>

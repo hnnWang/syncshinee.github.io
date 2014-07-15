@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>BUPT新生归来赛Solution - Sync Shinee</title>
+  <title>BUPT新生归来赛 Solution - Sync Shinee</title>
   <meta name="author" content="Sync Shinee">
 
   
@@ -66,7 +66,11 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2014/07/14/bupt0solution/">BUPT新生归来赛Solution</a>
+        <a href="/blog/2014/07/15/bupt1solution/">BUPT新生暑假个人排位赛01 Solution</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/14/bupt0solution/">BUPT新生归来赛 Solution</a>
       </li>
     
       <li class="post">
@@ -103,7 +107,7 @@
   
     <header>
       <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
-      <h1 class="entry-title">BUPT新生归来赛Solution</h1>
+      <h1 class="entry-title">BUPT新生归来赛 Solution</h1>
     </header>
   
   <div class="entry-content"><p>前几天打了BUPT的新生归来赛，感觉题目难度还可以吧，有几道题的确是需要费一些脑筋。下面我就来写一下这次比赛的解题报告。</p>
@@ -132,12 +136,12 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>附证明：
 </span><span class='line'>称一个先手必胜的局面为P局面，反之称之为N局面。
 </span><span class='line'>1. 当k1=k2=……=kn=0时，满足中状态时P局面。
-</span><span class='line'>2. 若S=0，若从堆i中取若干硬币使其剩下ki‘个(ki’ &lt; ki)，
-</span><span class='line'>   则ki ^ ki’ != 0。又S‘ ^ ki ^ ki’ = S = 0，故S‘ = ki ^ ki’ != 0。
+</span><span class='line'>2. 若S=0，若从堆i中取若干硬币使其剩下ki'个(ki' &lt; ki)，
+</span><span class='line'>   则ki ^ ki' != 0。又S' ^ ki ^ ki' = S = 0，故S' = ki ^ ki' != 0。
 </span><span class='line'>   满足P局面的所有子局面都是N局面。
 </span><span class='line'>3. 若S != 0，设S的二进制位为A1A2……An，考虑第一位是1的。
 </span><span class='line'>   在P中取出该位同是1的，不放设为P1。可知P1 ^ S &lt; P1，
-</span><span class='line'>   令P1‘ = P1 ^ S，则P1’ ^ P2 ^ …… ^ Pn=0。满足N局面存在至少一个P局面。
+</span><span class='line'>   令P1' = P1 ^ S，则P1' ^ P2 ^ …… ^ Pn=0。满足N局面存在至少一个P局面。
 </span><span class='line'>证毕。</span></code></pre></td></tr></table></div></figure>
 
 
@@ -171,7 +175,7 @@
 
 <p>这道题出的很有迷惑性。刚拿到题目时，我以为从每一个点出发都有许多方案可以选择，而且还有可能从不同的点出发，感觉这题太难了。赛后才发现，原来这是一棵树。也就是说如果你确定了要从某一个点出发，那么这个图的所有边的方向已经都确定了。而且我们还可以发现，从某个点出发所需的花费与从与它相邻的点出发所需的花费之间的差别仅在这两点间的边上。</p>
 
-<p>因此我们可以任选一个点来遍历整个树，求出他的花费，然后再遍历一便，更新所有点的花费。时间复杂度仅为O(n)。</p>
+<p>因此我们可以任选一个点来遍历整个树，求出他的花费，然后再遍历一次，更新所有点的花费。时间复杂度仅为O(n)。</p>
 
 <p>附<a href="/pages/bupt0/bupt0csource/">源代码</a></p>
 
