@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ACM | Sync Shinee]]></title>
   <link href="http://SyncShinee.github.io/blog/categories/acm/atom.xml" rel="self"/>
   <link href="http://SyncShinee.github.io/"/>
-  <updated>2014-07-15T09:33:55+08:00</updated>
+  <updated>2014-07-15T16:24:33+08:00</updated>
   <id>http://SyncShinee.github.io/</id>
   <author>
     <name><![CDATA[Sync Shinee]]></name>
@@ -31,7 +31,7 @@
 
 <p>事实上，这个问题是Nim问题的简化版。Nim问题为，有n堆硬币，每堆有ki个，每次只能从一堆硬币中取若干个，不能不取。谁最后没有石子可取就判为输。这个问题可通过判断S=k1 ^ k2  …… ^ kn的值来判断是否先手必胜(不为0则先手必胜)。</p>
 
-<p><code>linenos:false
+<p><code>
 附证明：
 称一个先手必胜的局面为P局面，反之称之为N局面。
 1. 当k1=k2=……=kn=0时，满足中状态时P局面。
@@ -52,13 +52,13 @@
 <h2><a href="http://code.bupt.edu.cn/problem/contest/101/problem/B/">B. Prime Judge</a></h2>
 
 <p>题目大意是给你一个复数判断它是不是复素数。复素数的定义为
-<code>linenos:false
+<code>
 如果a+bi能被分解为(a1 + b1i) * (a2 + b2i)的形式，那么该数不是素数；否则，该数是素数。
 其中a1 、b1、 a2 、b2均为整数，且1，-1，0，i，-i不能作为被分解的因子。
 </code>
 刚开始拿到这题确实没什么思路。因为a、b、a1、b1、a2、b2都有可能是负数，枚举也无从下手。后来，通过whn同学的提醒，我终于找到了解题思路。</p>
 
-<p>我们可以发现如果a + bi=(a1 + b1i)<em>(a2 + b2i),则|a + bi|=|a1 + b1i| * |a2 + b2i|，即a<sup>2</sup> + b<sup>2</sup> = (a1<sup>2</sup> + b1<sup>2</sup>) * (a2<sup>2</sup> + b2<sup>2</sup>)。这样，就把原问题转化为一个正数的分解因数。而这我们可以在O(sqrt(n))的时间内解决。不过还有一个要求就是这两个因数都必须是两个数的平方和，判断这个问题可以通过枚举a1，然后a2 = 因数1 &ndash; a1<sup>2</sup> ;再判断sqrt(a2)<sup>2</sup> 是不是等于a2，如果相等，证明因数1是合法的对因数，对因数2可采取同样措施。这个复杂度为O(sqrt(sqrt(n)))。而n为a<sup>2</sup> + b<sup>2</sup> ，因此总的时间复杂度为O(a</em>sqrt(a))，可以接受。</p>
+<p>我们可以发现如果a + bi=(a1 + b1i)<em>(a2 + b2i),则|a + bi| = |a1 + b1i| * |a2 + b2i|，即a<sup>2</sup> + b<sup>2</sup> = (a1<sup>2</sup> + b1<sup>2</sup>) * (a2<sup>2</sup> + b2<sup>2</sup>)。这样，就把原问题转化为一个正数的分解因数。而这我们可以在O(sqrt(n))的时间内解决。不过还有一个要求就是这两个因数都必须是两个数的平方和，判断这个问题可以通过枚举a1，然后a2 = 因数1 &ndash; a1<sup>2</sup> ;再判断sqrt(a2)<sup>2</sup> 是不是等于a2，如果相等，证明因数1是合法的对因数，对因数2可采取同样措施。这个复杂度为O(sqrt(sqrt(n)))。而n为a<sup>2</sup> + b<sup>2</sup> ，因此总的时间复杂度为O(a</em>sqrt(a))，可以接受。</p>
 
 <p>whn同学还告诉我一种更加简洁的解法，具体可以参考<a href="http://blog.csdn.net/whn757397540/article/details/37742457">这篇博文</a></p>
 
